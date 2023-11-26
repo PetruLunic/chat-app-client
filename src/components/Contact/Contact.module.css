@@ -1,0 +1,17 @@
+.contact__item{
+    width: 100%;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 7px;
+    text-decoration: none;
+}
+.contact__item:hover{
+    background-color: rgb(244,244,245);
+}
+.contact__item.active{
+    background-color: rgb(51,144,236, 0.9);
+}
+.contact__container{
+    padding: 6px;
+    border-right: 1px rgb(225, 225, 225) solid;
+}

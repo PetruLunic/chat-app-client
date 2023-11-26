@@ -1,0 +1,27 @@
+.auth__form{
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #686c72;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth__input{
+    width: 100%;
+}
+
+.auth__input-icon{
+    color: #686c72;
+}
+
+@media(max-width: 575px){
+    .auth__form{
+        border: none;
+        margin: 20px auto;
+        width: 100%;
+    }
+}
