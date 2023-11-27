@@ -1,11 +1,11 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IMessage, IUser} from "../../types";
+import {IUser} from "../../types";
 
-
+const baseUrl = (process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/") + 'user/search';
 export const searchAPI = createApi({
     reducerPath: 'searchAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/user/search/',
+        baseUrl,
         prepareHeaders: (headers, {getState}) => {
             const token = localStorage.getItem('token');
 

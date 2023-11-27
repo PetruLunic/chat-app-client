@@ -1,10 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {IMessage} from "../../types";
 
+const baseUrl = (process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/") + 'user/message';
+
 export const messagesAPI = createApi({
     reducerPath: 'messagesAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/user/message/',
+        baseUrl,
         prepareHeaders: (headers, {getState}) => {
             const token = localStorage.getItem('token');
 

@@ -1,11 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {IUser} from "../../types";
 
+const baseUrl = (process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/") + 'user/contacts/request';
 
 export const contactsRequestAPI = createApi({
     reducerPath: 'contactsRequestAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/user/contacts/request/',
+        baseUrl,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('token');
 
