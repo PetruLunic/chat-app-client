@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {IUser, IUserLogin} from "../types";
 
-const baseUrl = process.env.BACKEND_URL || "http://localhost:5000/";
+const baseUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/";
 
 export const authAPI = createApi({
     reducerPath: 'authAPI',
