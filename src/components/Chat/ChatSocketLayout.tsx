@@ -13,25 +13,32 @@ const ChatSocketLayout: FC = () => {
     const contacts = useAppSelector(state => state.contacts.contacts);
     const dispatch = useAppDispatch();
     const {notification} = App.useApp();
+    const socketUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.id}`;
 
     useEffect(() => {
-        if (!user.id) return;
+        try{
+            if (!user.id) return;
 
-        const newSocket = new WebSocket(`ws://localhost:5000/?id=${user.id}`);
-        setSocket(newSocket);
+            const newSocket = new WebSocket(socketUrl);
 
-        newSocket.onopen = () => {
-            console.log('Socket opened');
+            setSocket(newSocket);
+
+            newSocket.onopen = () => {
+                console.log('Socket opened');
+            }
+
+            newSocket.onclose = () => {
+                console.log('Socket closed');
+                dispatch(userActions.disconnect());
+            }
+
+            newSocket.onerror = () => {
+                console.error('Socket error');
+            }
+        } catch(e){
+            console.log(e);
         }
 
-        newSocket.onclose = () => {
-            console.log('Socket closed');
-            dispatch(userActions.disconnect());
-        }
-
-        newSocket.onerror = () => {
-            console.error('Socket error');
-        }
     }, [user])
 
     useEffect(() => {
