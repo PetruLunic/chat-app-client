@@ -13,7 +13,7 @@ const ChatSocketLayout: FC = () => {
     const contacts = useAppSelector(state => state.contacts.contacts);
     const dispatch = useAppDispatch();
     const {notification} = App.useApp();
-    const socketUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.id}`;
+    const socketUrl = `${process.env.REACT_APP_BACKEND_WS_URL}/${user.id}`;
 
     useEffect(() => {
         try{
