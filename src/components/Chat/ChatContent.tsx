@@ -11,13 +11,13 @@ import {useOutletContext} from "react-router-dom";
 import cl from "./Chat.module.css";
 import {useErrorNotification} from "../../hooks/useErrorNotification";
 import {useIsChangingContact} from "../../hooks/useIsChangingContact";
+import { skipToken } from '@reduxjs/toolkit/query/react'
 
 const ChatContent: FC = () => {
     const contactId = useAppSelector(state => state.contacts.active?.id);
     const dispatch = useAppDispatch();
-    const [getMessages, {data: messages, isFetching: isFetchingMessages, error: messagesError}] = messagesAPI.useLazyGetQuery({
-        pollingInterval: 10000,
-    });
+    const {data: messages, isFetching: isFetchingMessages, error: messagesError} = messagesAPI.useGetQuery(contactId ?? skipToken
+        , {pollingInterval: 60000});
     const [sendMessage, {data: sendResponse, isLoading: isSendingMessage}] = messagesAPI.useAddMutation();
     const collapsible = useSiderCollapsible();
     const socket = useOutletContext<WebSocket | undefined>();
@@ -29,13 +29,6 @@ const ChatContent: FC = () => {
 
         dispatch(messagesActions.setIsLoading(isChangingContact));
     }, [isChangingContact]);
-
-    // refetch messages on every contactId change
-    useLayoutEffect(() => {
-        if (!contactId) return;
-
-        getMessages(contactId);
-    }, [contactId]);
 
     const collapseSiderHandle = () => {
         if (collapsible){

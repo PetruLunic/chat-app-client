@@ -19,9 +19,11 @@ export const messagesAPI = createApi({
     }),
     keepUnusedDataFor: 0,
     refetchOnMountOrArgChange: true,
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
     tagTypes: ['Messages'],
     endpoints: (build) => ({
-        get: build.query<IMessage[], string | undefined>({
+        get: build.query<IMessage[], string>({
             query: (id) => ({
                 url: `get/${id}`
             }),
