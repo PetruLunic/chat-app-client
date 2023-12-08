@@ -19,6 +19,7 @@ const ChatSocketLayout: FC = () => {
     useEffect(() => {
         const handleFocus = () => {
             if (socketConnected) return;
+            if (socket?.CONNECTING) return;
 
             setSocketConnected(false);
         }
@@ -28,12 +29,13 @@ const ChatSocketLayout: FC = () => {
         return () => {
             window.removeEventListener('focus', handleFocus);
         }
-    }, [socketConnected])
+    }, [socketConnected, socket])
 
     useEffect(() => {
         try{
             if (!user.id) return;
             if (socketConnected) return;
+            if (socket?.CONNECTING) return;
 
             const newSocket = new WebSocket(socketUrl);
 
