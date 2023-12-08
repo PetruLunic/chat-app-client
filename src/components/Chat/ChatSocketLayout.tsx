@@ -15,6 +15,21 @@ const ChatSocketLayout: FC = () => {
     const {notification} = App.useApp();
     const socketUrl = `${process.env.REACT_APP_BACKEND_WS_URL}/${user.id}`;
 
+    // Reconnecting to websocket after refocus on window if it was closed
+    useEffect(() => {
+        const handleFocus = () => {
+            if (socketConnected) return;
+
+            setSocketConnected(false);
+        }
+
+        window.addEventListener('focus', handleFocus);
+
+        return () => {
+            window.removeEventListener('focus', handleFocus);
+        }
+    }, [socketConnected])
+
     useEffect(() => {
         try{
             if (!user.id) return;

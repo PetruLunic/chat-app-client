@@ -1,37 +1,19 @@
-import React, {useEffect} from 'react';
-import {useAppDispatch} from "../hooks/redux";
-import {actions} from '../store/reducers/UserSlice';
-import {IUser} from "../types";
+import React from 'react';
 import {authAPI} from "../services/authAPI";
-import {useNavigate} from "react-router-dom";
 import '../styles/auth.css'
 import {Button, Form, Input} from "antd";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import {useCurrentBreakpoint} from "../hooks/useCurrentBreakpoint";
 import {useErrorNotification} from "../hooks/useErrorNotification";
+import {useAuthUser} from "../hooks/useAuthUser";
 
 const LogIn: React.FC = () => {
-    const dispatch = useAppDispatch();
     const [login, {data, error, isLoading}] = authAPI.useLoginMutation();
-    const navigate = useNavigate();
     const [form] = Form.useForm();
     const username = Form.useWatch('username', form);
     const breakpoint = useCurrentBreakpoint();
     useErrorNotification([error]);
-
-    useEffect(() => {
-        if (data){
-            if (data.token) localStorage.setItem('token', data.token);
-
-            dispatch(actions.connect({
-                id: data.id,
-                username,
-                token: data?.token
-            } as IUser));
-
-            navigate('/');
-        }
-    }, [data]);
+    useAuthUser(data, username);
 
     return (
         <Form
