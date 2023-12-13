@@ -1,6 +1,6 @@
 import React from 'react';
 import ChatList from "./ChatList";
-import {useAppSelector} from "../../hooks/redux";
+import {useAppSelector} from "@hooks/redux";
 import ChatListFrame from "./ChatListFrame";
 
 interface ChatMessageListProps{

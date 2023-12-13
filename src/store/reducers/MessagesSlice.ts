@@ -1,4 +1,4 @@
-import {IMessage} from "../../types";
+import {IMessage} from "@types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 

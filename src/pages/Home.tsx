@@ -3,7 +3,7 @@ import ContactSider from "../components/Contact/ContactSider";
 import {useMatch} from "react-router-dom";
 import { Layout } from 'antd';
 import {actions as contactsActions} from "../store/reducers/ContactsSlice";
-import {useAppDispatch} from "../hooks/redux";
+import {useAppDispatch} from "@hooks/redux";
 import ChatSocketLayout from "../components/Chat/ChatSocketLayout";
 
 const Home: React.FC = () => {

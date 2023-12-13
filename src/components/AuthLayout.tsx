@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {useAppDispatch, useAppSelector} from "@hooks/redux";
 import {Outlet, useNavigate} from "react-router-dom";
-import {userAPI} from "../services/userAPI";
-import {actions} from "../store/reducers/UserSlice";
+import {userAPI} from "@services/userAPI";
+import {actions} from "@store/reducers/UserSlice";
 import {LoadingOutlined} from "@ant-design/icons";
 
 const AuthLayout: React.FC = () => {

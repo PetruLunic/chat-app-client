@@ -1,7 +1,7 @@
 import {App, Dropdown, MenuProps} from 'antd';
 import React, {FC, useContext, useEffect} from 'react';
 import {EditMessageContext, MessageContext} from "../../Contexts";
-import {messagesAPI} from "../../../services/userAPI/messagesAPI";
+import {messagesAPI} from "@services/userAPI/messagesAPI";
 
 interface ChatMessageDropdownProps{
     items: MenuProps['items'],

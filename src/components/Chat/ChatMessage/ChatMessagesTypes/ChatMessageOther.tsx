@@ -1,8 +1,8 @@
 import React from 'react';
-import {IMessage} from "../../../../types";
+import {IMessage} from "@types";
 import {MenuProps, Typography} from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
-import {useMessageTime} from "../../../../hooks/useMessageTime";
+import {useMessageTime} from "@hooks/useMessageTime";
 import cl from "../../Chat.module.css";
 import {CopyOutlined} from "@ant-design/icons";
 import ChatMessageDropdown from "../ChatMessageDropdown";

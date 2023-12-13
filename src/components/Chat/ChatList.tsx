@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {List} from "antd";
-import {IMessage} from "../../types";
+import {IMessage} from "@types";
 import ChatMessage from "./ChatMessage/ChatMessage";
 import ChatMessageSkeletons from "./ChatMessageSkeletons";
 

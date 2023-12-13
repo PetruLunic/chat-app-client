@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import '../../App.css'
+import '@src/App.css'
 import ChatHeader from "./ChatHeader";
 import { Layout } from 'antd';
 import ChatContent from "./ChatContent";
-import {actions as contactsActions} from "../../store/reducers/ContactsSlice";
+import {actions as contactsActions} from "@store/reducers/ContactsSlice";
 import {useNavigate, useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "@hooks/redux";
 import cl from "./Chat.module.css"
 
 const ChatContainer: React.FC = () => {

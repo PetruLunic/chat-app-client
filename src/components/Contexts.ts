@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {IMessage} from "../types";
+import {IMessage} from "@types";
 
 
 export const MessageContext = createContext<IMessage | null>(null);

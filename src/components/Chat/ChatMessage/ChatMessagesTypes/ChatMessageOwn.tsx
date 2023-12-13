@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {IMessage} from "../../../../types";
+import {IMessage} from "@types";
 import {App, MenuProps} from "antd";
-import {EditMessageContext} from '../../../Contexts';
+import {EditMessageContext} from '@components/Contexts';
 import {CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import {Typography} from "antd";
 import TextArea, {TextAreaRef} from "antd/es/input/TextArea";
-import {messagesAPI} from "../../../../services/userAPI/messagesAPI";
-import {useMessageTime} from "../../../../hooks/useMessageTime";
+import {messagesAPI} from "@services/userAPI/messagesAPI";
+import {useMessageTime} from "@hooks/useMessageTime";
 import cl from "../../Chat.module.css";
 import ChatMessageDropdown from "../ChatMessageDropdown";
 

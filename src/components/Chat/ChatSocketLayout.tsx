@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "@hooks/redux";
 import { Outlet } from 'react-router-dom';
-import {IMessage} from "../../types";
-import {messagesAPI} from "../../services/userAPI/messagesAPI";
+import {IMessage} from "@types";
+import {messagesAPI} from "@services/userAPI/messagesAPI";
 import {App} from "antd";
 
 const ChatSocketLayout: FC = () => {

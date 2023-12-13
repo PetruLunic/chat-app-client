@@ -1,9 +1,9 @@
 import React from 'react';
-import {IMessage} from "../../../types";
-import {useAppSelector} from "../../../hooks/redux";
+import {IMessage} from "@types";
+import {useAppSelector} from "@hooks/redux";
 import ChatMessageOwn from "./ChatMessagesTypes/ChatMessageOwn";
 import ChatMessageOther from "./ChatMessagesTypes/ChatMessageOther";
-import {MessageContext} from "../../Contexts";
+import {MessageContext} from "@components/Contexts";
 
 
 interface ChatMessageProps{

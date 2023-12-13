@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef, useState} from "react";
 import {useAppSelector} from "./redux";
-import {IUser} from "../types";
+import {IUser} from "@types";
 
 
 export function useIsChangingContact(isFetching: boolean): boolean{

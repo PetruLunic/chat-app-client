@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
-import {IMessage} from "../../types";
-import {useAppSelector} from "../../hooks/redux";
+import {IMessage} from "@types";
+import {useAppSelector} from "@hooks/redux";
 import {Button, Form, Input} from "antd";
 import {SendOutlined} from "@ant-design/icons";
 

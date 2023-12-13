@@ -3,12 +3,12 @@ import userReducer from './reducers/UserSlice'
 import siderReducer from './reducers/SiderSlice';
 import contactsReducer from './reducers/ContactsSlice';
 import messagesReducer from './reducers/MessagesSlice';
-import {authAPI} from "../services/authAPI";
-import {userAPI} from "../services/userAPI";
-import {messagesAPI} from "../services/userAPI/messagesAPI";
-import {contactsAPI} from "../services/userAPI/contactsAPI";
-import {searchAPI} from "../services/userAPI/searchAPI";
-import {contactsRequestAPI} from "../services/userAPI/contactRequestAPI";
+import {authAPI} from "@services/authAPI";
+import {userAPI} from "@services/userAPI";
+import {messagesAPI} from "@services/userAPI/messagesAPI";
+import {contactsAPI} from "@services/userAPI/contactsAPI";
+import {searchAPI} from "@services/userAPI/searchAPI";
+import {contactsRequestAPI} from "@services/userAPI/contactRequestAPI";
 
 const combinedReducer = combineReducers({
     user: userReducer,

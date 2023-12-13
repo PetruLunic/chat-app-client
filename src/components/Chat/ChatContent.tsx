@@ -1,16 +1,16 @@
 import React, {FC, useEffect, useLayoutEffect} from 'react';
 import ChatMessageList from "./ChatMessageList";
 import ChatSendForm from "./ChatSendForm";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {messagesAPI} from "../../services/userAPI/messagesAPI";
-import {useSiderCollapsible} from "../../hooks/useSiderCollapsible";
-import {actions as siderActions} from "../../store/reducers/SiderSlice";
-import {actions as messagesActions} from "../../store/reducers/MessagesSlice";
+import {useAppDispatch, useAppSelector} from "@hooks/redux";
+import {messagesAPI} from "@services/userAPI/messagesAPI";
+import {useSiderCollapsible} from "@hooks/useSiderCollapsible";
+import {actions as siderActions} from "@store/reducers/SiderSlice";
+import {actions as messagesActions} from "@store/reducers/MessagesSlice";
 import { Content } from 'antd/es/layout/layout';
 import {useOutletContext} from "react-router-dom";
 import cl from "./Chat.module.css";
-import {useErrorNotification} from "../../hooks/useErrorNotification";
-import {useIsChangingContact} from "../../hooks/useIsChangingContact";
+import {useErrorNotification} from "@hooks/useErrorNotification";
+import {useIsChangingContact} from "@hooks/useIsChangingContact";
 import { skipToken } from '@reduxjs/toolkit/query/react'
 
 const ChatContent: FC = () => {

@@ -1,6 +1,6 @@
-import {IUser} from "../types";
+import {IUser} from "@types";
 import {useEffect} from "react";
-import {actions} from "../store/reducers/UserSlice";
+import {actions} from "@store/reducers/UserSlice";
 import {useAppDispatch} from "./redux";
 import {useNavigate} from "react-router-dom";
 

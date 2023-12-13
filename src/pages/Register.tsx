@@ -1,11 +1,11 @@
 import React from 'react';
-import {authAPI} from "../services/authAPI";
+import {authAPI} from "@services/authAPI";
 import '../styles/auth.css'
 import {Button, Form, Input} from "antd";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
-import {useCurrentBreakpoint} from "../hooks/useCurrentBreakpoint";
-import {useErrorNotification} from "../hooks/useErrorNotification";
-import {useAuthUser} from "../hooks/useAuthUser";
+import {useCurrentBreakpoint} from "@hooks/useCurrentBreakpoint";
+import {useErrorNotification} from "@hooks/useErrorNotification";
+import {useAuthUser} from "@hooks/useAuthUser";
 
 const Register: React.FC = () => {
     const [register, {data, error, isLoading}] = authAPI.useRegistrationMutation();

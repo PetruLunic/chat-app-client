@@ -1,10 +1,10 @@
 import React, {FC, memo} from 'react';
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "@hooks/redux";
 import {Button, Flex, Layout} from 'antd';
-import {actions as siderActions} from "../../store/reducers/SiderSlice";
-import {useCurrentBreakpoint} from "../../hooks/useCurrentBreakpoint";
-import {useSiderCollapsible} from "../../hooks/useSiderCollapsible";
+import {actions as siderActions} from "@store/reducers/SiderSlice";
+import {useCurrentBreakpoint} from "@hooks/useCurrentBreakpoint";
+import {useSiderCollapsible} from "@hooks/useSiderCollapsible";
 import {ArrowLeftOutlined, CloseOutlined} from "@ant-design/icons";
 import cl from "./Chat.module.css";
 
