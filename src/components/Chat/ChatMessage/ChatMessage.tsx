@@ -3,6 +3,7 @@ import {IMessage} from "../../../types";
 import {useAppSelector} from "../../../hooks/redux";
 import ChatMessageOwn from "./ChatMessagesTypes/ChatMessageOwn";
 import ChatMessageOther from "./ChatMessagesTypes/ChatMessageOther";
+import {MessageContext} from "../../Contexts";
 
 
 interface ChatMessageProps{
@@ -13,11 +14,17 @@ const ChatMessage: React.FC<ChatMessageProps> = ({message}) => {
     const user = useAppSelector(state => state.user.user);
 
     if (message.from === user.id){
-        return <ChatMessageOwn message={message}/>
+        return (
+            <MessageContext.Provider value={message}>
+                <ChatMessageOwn message={message}/>
+            </MessageContext.Provider>
+        )
     }
 
     return (
-        <ChatMessageOther message={message}/>
+        <MessageContext.Provider value={message}>
+            <ChatMessageOther message={message}/>
+        </MessageContext.Provider>
     );
 };
 

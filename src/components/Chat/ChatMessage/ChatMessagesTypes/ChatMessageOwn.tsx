@@ -1,15 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {IMessage} from "../../../../types";
-import {App, Dropdown, MenuProps} from "antd";
-import EditMessage from "../ContextMenuItems/EditMessage";
-import DeleteMessage from "../ContextMenuItems/DeleteMessage";
-import {EditMessageContext, MessageContext} from '../../../Contexts';
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {App, MenuProps} from "antd";
+import {EditMessageContext} from '../../../Contexts';
+import {CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import {Typography} from "antd";
 import TextArea, {TextAreaRef} from "antd/es/input/TextArea";
 import {messagesAPI} from "../../../../services/userAPI/messagesAPI";
 import {useMessageTime} from "../../../../hooks/useMessageTime";
 import cl from "../../Chat.module.css";
+import ChatMessageDropdown from "../ChatMessageDropdown";
 
 const {Text} = Typography;
 const {Paragraph} = Typography;
@@ -20,16 +19,21 @@ interface ChatMessageProps{
 
 const items: MenuProps['items'] = [
     {
-        label: <EditMessage/>,
+        label: "Copy message",
+        icon: <CopyOutlined/>,
+        key: "0"
+    },
+    {
+        label: "Edit message",
         icon: <EditOutlined/>,
         key: "1"
     },
     {
-        label: <DeleteMessage/>,
+        label: "Delete message",
         icon: <DeleteOutlined/>,
         danger: true,
         key: "2"
-    }
+    },
 ]
 
 const ChatMessage: React.FC<ChatMessageProps> = ({message}) => {
@@ -69,38 +73,35 @@ const ChatMessage: React.FC<ChatMessageProps> = ({message}) => {
     }
 
     return (
-        <MessageContext.Provider value={message}>
-            <EditMessageContext.Provider value={setEdit}>
-                <Dropdown
-                    menu={{items}}
-                    trigger={['contextMenu']}
-                >
-                    <div className={`${cl.chat__message} ${cl.own}`}>
-                        {edit
-                            ? <TextArea
-                                ref={textArea}
-                                value={editedText}
-                                onChange={e => setEditedText(e.target.value)}
-                                autoSize
-                                style={{width: "1000px"}}
-                                bordered={false}
-                                onBlur={finishEditHandle}
-                                onPressEnter={finishEditHandle}
-                            />
-                            : <Paragraph
-                                ellipsis={{ rows: 7, expandable: true, symbol: 'Expand' }}
-                                style={{margin: "0"}}
-                            >
-                                {message.text}
-                            </Paragraph>}
+        <EditMessageContext.Provider value={setEdit}>
+            <ChatMessageDropdown
+                items={items}
+            >
+                <div className={`${cl.chat__message} ${cl.own}`}>
+                    {edit
+                        ? <TextArea
+                            ref={textArea}
+                            value={editedText}
+                            onChange={e => setEditedText(e.target.value)}
+                            autoSize
+                            style={{width: "1000px"}}
+                            bordered={false}
+                            onBlur={finishEditHandle}
+                            onPressEnter={finishEditHandle}
+                        />
+                        : <Paragraph
+                            ellipsis={{ rows: 7, expandable: true, symbol: 'Expand' }}
+                            style={{margin: "0"}}
+                        >
+                            {message.text}
+                        </Paragraph>}
 
-                        <Text type='secondary' className={cl.chat__messageTime}>
-                            {hours}:{minutes}
-                        </Text>
-                    </div>
-                </Dropdown>
-            </EditMessageContext.Provider>
-        </MessageContext.Provider>
+                    <Text type='secondary' className={cl.chat__messageTime}>
+                        {hours}:{minutes}
+                    </Text>
+                </div>
+            </ChatMessageDropdown>
+        </EditMessageContext.Provider>
     );
 };
 
