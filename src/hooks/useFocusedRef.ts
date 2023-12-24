@@ -8,11 +8,12 @@ export const useFocusedRef = <T extends HTMLElement>(allowedTags: string[], opti
     const ref = useRef<T | null>(null)
 
     useEffect(() => {
+        // on phone disable auto-focusing
+        if ('ontouchstart' in document.documentElement) return;
+
         ref.current?.focus(options)
 
         const handleFocus = (e: FocusEvent) => {
-            e.preventDefault();
-
             const target = e.relatedTarget as HTMLElement | null;
 
             const tagName = target
