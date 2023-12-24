@@ -11,7 +11,7 @@ interface ChatSendMenuProps{
 }
 
 const ChatSendForm: FC<ChatSendMenuProps> = ({sendMessage}) => {
-    const ref = useFocusedRef<TextAreaRef>(["input", "textarea"])
+    const ref = useFocusedRef<HTMLTextAreaElement>(["input", "textarea"], {cursor: 'end'})
     const [text, setText] = useState<string>("");
     const activeContact = useAppSelector(state => state.contacts.active);
     const user = useAppSelector((state) => state.user.user);

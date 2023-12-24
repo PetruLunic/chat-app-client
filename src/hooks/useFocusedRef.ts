@@ -1,29 +1,31 @@
 import {MutableRefObject, useEffect, useRef} from "react";
 
+interface CustomFocusOptions extends FocusOptions{
+    cursor?: 'start' | 'end' | 'all'
+}
 
-export const useFocusedRef = <T>(allowedTags: string[]): MutableRefObject<T | null> => {
+export const useFocusedRef = <T extends HTMLElement>(allowedTags: string[], options: CustomFocusOptions): MutableRefObject<T | null> => {
     const ref = useRef<T | null>(null)
 
     useEffect(() => {
-        // @ts-ignore
-        ref.current?.focus({
-            cursor: 'end'
-        })
+        ref.current?.focus(options)
 
-        const handleClick = (e: MouseEvent) => {
-            // @ts-ignore
-            if (allowedTags.find(tag => tag === e.target.tagName.toLowerCase())) return;
+        const handleFocus = (e: FocusEvent) => {
+            const target = e.relatedTarget as HTMLElement | null;
 
-            // @ts-ignore
-            ref.current?.focus({
-                cursor: 'end'
-            })
+            const tagName = target
+                ? target.tagName.toLowerCase()
+                : null
+
+            if (tagName && allowedTags.includes(tagName)) return;
+
+            ref.current?.focus(options)
         }
 
-        document.addEventListener("click", handleClick, true)
+        document.addEventListener("focusout", handleFocus);
 
         return () => {
-            document.removeEventListener("click", handleClick)
+            document.removeEventListener("focusout", handleFocus)
         }
     }, [])
 
