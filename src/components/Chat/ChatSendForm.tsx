@@ -20,6 +20,8 @@ const ChatSendForm: FC<ChatSendMenuProps> = ({sendMessage}) => {
         if (!text.trim()) return;
         if (!activeContact) return;
 
+        ref.current?.focus({cursor: 'end'} as FocusOptions)
+
         const message: IMessage = {
             from: user.id,
             to: activeContact.id,
