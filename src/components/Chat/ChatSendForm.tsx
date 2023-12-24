@@ -3,12 +3,15 @@ import {IMessage} from "@types";
 import {useAppSelector} from "@hooks/redux";
 import {Button, Form, Input} from "antd";
 import {SendOutlined} from "@ant-design/icons";
+import {TextAreaRef} from "antd/es/input/TextArea";
+import {useFocusedRef} from "@hooks/useFocusedRef";
 
 interface ChatSendMenuProps{
     sendMessage: (message: IMessage) => void;
 }
 
 const ChatSendForm: FC<ChatSendMenuProps> = ({sendMessage}) => {
+    const ref = useFocusedRef<TextAreaRef>(["input", "textarea"])
     const [text, setText] = useState<string>("");
     const activeContact = useAppSelector(state => state.contacts.active);
     const user = useAppSelector((state) => state.user.user);
@@ -37,6 +40,7 @@ const ChatSendForm: FC<ChatSendMenuProps> = ({sendMessage}) => {
                 style={{flex: '1'}}
             >
                 <Input.TextArea
+                    ref={ref}
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Message"

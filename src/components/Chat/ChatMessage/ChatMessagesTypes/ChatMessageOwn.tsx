@@ -48,7 +48,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({message}) => {
         if (!edit) return;
 
         setEditedText(message.text);
-        textArea.current?.focus();
+        textArea.current?.focus({cursor: 'end'});
     }, [edit])
 
     useEffect(() => {
